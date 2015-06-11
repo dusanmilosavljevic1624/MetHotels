@@ -1,12 +1,7 @@
-<html t:type="layout" title="Dodavanje Sobe"
+<html t:type="layout" title="TapestryHibernateDemo Index"
+ t:sidebarTitle="Framework Version"
  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
  xmlns:p="tapestry:parameter">
-<div class="col-xs-12">
-<div class="col-xs-4">
- <t:beaneditform object="soba"/>
-</div>
-<div class="col-xs-8">
- <t:grid t:source="sobe"/>
-</div>
-</div>
+ <t:beaneditform object="soba" exclude="id" />
+ <t:grid source="sobe" exclude="id"/>
 </html>
