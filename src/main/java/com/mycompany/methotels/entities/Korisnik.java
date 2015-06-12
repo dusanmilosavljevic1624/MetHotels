@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
@@ -56,6 +57,7 @@ public class Korisnik implements Serializable {
     @OneToMany(mappedBy = "korisnikId")
     private List<Soba> sobaList;
 
+    @Inject
     public Korisnik() {
     }
 
@@ -150,7 +152,7 @@ public class Korisnik implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.methotels.entities.Korisnik[ korisnikId=" + korisnikId + " ]";
+        return korisnikIme;
     }
     
 }

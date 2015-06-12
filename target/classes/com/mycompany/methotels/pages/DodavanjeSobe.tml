@@ -2,6 +2,19 @@
  t:sidebarTitle="Framework Version"
  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
  xmlns:p="tapestry:parameter">
- <t:beaneditform object="soba" exclude="id" />
- <t:grid source="sobe" exclude="id"/>
+ <t:beaneditform object="soba" exclude="sobaId" add="korisnikId" >
+ <p:korisnikId>
+ <t:label for="korisnikId"/>:
+ <t:select t:blankLabel="Odaberi Korisnika" t:id="korisnikId" encoder="encoder" model="korisnici"
+validate="required"/>
+ </p:korisnikId>
+ </t:beaneditform>
+     <t:grid source="sobe" exclude="sobaId" add="delete,korisnik" row="onesoba">
+         <p:deleteCell>
+         <t:actionlink t:id="delete" context="onesoba.sobaId">Delete</t:actionlink>
+         </p:deleteCell>
+         <p:korisnikCell>
+         ${korisnik}
+         </p:korisnikCell>
+    </t:grid>
 </html>

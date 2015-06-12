@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.apache.tapestry5.beaneditor.Validate;
+import org.apache.tapestry5.ioc.annotations.Inject;
 
 /**
  *
@@ -54,6 +55,7 @@ public class Soba implements Serializable {
     @ManyToOne
     private Korisnik korisnikId;
 
+    @Inject
     public Soba() {
     }
 

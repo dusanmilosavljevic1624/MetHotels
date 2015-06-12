@@ -1,5 +1,9 @@
 package com.mycompany.methotels.services;
 
+import com.mycompany.methotels.dao.KorisnikDao;
+import com.mycompany.methotels.dao.KorisnikDaoImpl;
+import com.mycompany.methotels.dao.SobaDao;
+import com.mycompany.methotels.dao.SobaDaoImpl;
 import java.io.IOException;
 
 import org.apache.tapestry5.*;
@@ -11,9 +15,6 @@ import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.*;
-import org.apache.tapestry5.services.javascript.JavaScriptStack;
-import org.apache.tapestry5.services.javascript.StackExtension;
-import org.apache.tapestry5.services.javascript.StackExtensionType;
 import org.slf4j.Logger;
 
 /**
@@ -24,12 +25,8 @@ public class AppModule
 {
     public static void bind(ServiceBinder binder)
     {
-        // binder.bind(MyServiceInterface.class, MyServiceImpl.class);
-
-        // Make bind() calls on the binder object to define most IoC services.
-        // Use service builder methods (example below) when the implementation
-        // is provided inline, or requires more initialization than simply
-        // invoking the constructor.
+        binder.bind(SobaDao.class, SobaDaoImpl.class);
+        binder.bind(KorisnikDao.class, KorisnikDaoImpl.class);
     }
 
     public static void contributeFactoryDefaults(
@@ -44,6 +41,8 @@ public class AppModule
     	// by adding the same key in the contributeApplicationDefaults method.
         configuration.override(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
 		configuration.override(SymbolConstants.PRODUCTION_MODE, false);
+                configuration.override(SymbolConstants.HMAC_PASSPHRASE, 0);
+
     }
 
     public static void contributeApplicationDefaults(
